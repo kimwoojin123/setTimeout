@@ -30,6 +30,7 @@
       justify-content: center;
       align-items: center;
       cursor: pointer;
+      border : 1px solid black;
     }
     #score{
       width:200px;
@@ -38,7 +39,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
-
+      flex-direction: column;
+      border : 1px solid black;
     }
     #timer{
       width:200px;
@@ -47,6 +49,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
+      border : 1px solid black;
     }
   </style>
 </head>
@@ -75,12 +79,13 @@
     let root = document.getElementById('root');
     let start = document.getElementById('start');
     let score = document.getElementById('score')
-    let size = 100
+    let timer = document.getElementById('timer')
+    // let size = 100
     let count = 0
-
+    let time = 10
 
     start.addEventListener('click', function(){
-    let interval = setInterval(callback, 1500);
+    let interval = setInterval(callback, 1000);
     function callback() {
       let createBtn = document.createElement('button');
       createBtn.style.width = "100px";
@@ -89,10 +94,10 @@
       //   createBtn.style.width = size + "px"
       //   createBtn.style.height = size + "px"
       //   size--
-      //   if(size === 20){
-      //     // this.remove()
+      //   if(size < 20){
+    
       //     createBtn.remove()
-      //     // 특정 크기일때의 요소만 지정하고싶은데 그방법을 모름;;
+      //   //   // 특정 크기일때의 요소만 지정하고싶은데 그방법을 모름;;
       //   }
       // },100)
       createBtn.style.backgroundImage = "url(images.png)"
@@ -112,9 +117,24 @@
       createBtn.addEventListener('click', function(){
         createBtn.remove()
         count = count + 10
-        score.textContent = count
+        score.textContent = `점수 : ${count}점`
       })
-    }})
+
+      if(time < 3){
+        clearInterval(interval)
+      }
+
+    }
+    let timeInterval= setInterval(closing,1000)
+      function closing() {
+          time = time -1
+          timer.textContent = `남은시간 : ${time}초`
+          if(time === 0){
+          timer.textContent = "Time Over"
+          clearInterval(timeInterval)
+        }
+        }
+  })
 
 
 
