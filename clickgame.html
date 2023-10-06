@@ -46,7 +46,7 @@
     let root = document.getElementById('root');
     let start = document.getElementById('start');
 
-    
+    start.addEventListener('click', function(){
     let interval = setInterval(callback, 1500);
     function callback() {
       let createBtn = document.createElement('button');
@@ -71,7 +71,7 @@
 
       
       })
-    }
+    }})
 
 
 
