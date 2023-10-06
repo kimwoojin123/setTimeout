@@ -20,11 +20,16 @@
     div:nth-child(2){
       display:flex;
       flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width:30vw;
+      height:100vh;
+      background-color:bisque;
     }
     #start{
       width:200px;
       height:200px;
-      background-color: red;
+      background-color:deeppink;
       font-size: 48px;
       display: flex;
       justify-content: center;
@@ -35,22 +40,35 @@
     #score{
       width:200px;
       height:100px;
-      background-color: lightgray;
+      background-color:antiquewhite;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
       border : 1px solid black;
+      margin-bottom: 50px;
     }
     #timer{
       width:200px;
       height:100px;
-      background-color: lightgray;
+      background-color: antiquewhite;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
       border : 1px solid black;
+      margin-bottom: 20px;
+    }
+    #reload{
+      width:200px;
+      height:100px;
+      background-color: antiquewhite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      border : 1px solid black;
+      margin-bottom: 20px;
     }
   </style>
 </head>
@@ -58,6 +76,7 @@
   <div id="root">
   </div>
   <div>
+  <div id="reload">초기화</div>
   <div id="timer">제한시간</div>
   <div id="score">점수</div>
   <div id="start">시작</div>
@@ -78,14 +97,16 @@
     // 클릭이벤트에 remove줘서 클릭하면 사라지게 함
     let root = document.getElementById('root');
     let start = document.getElementById('start');
-    let score = document.getElementById('score')
-    let timer = document.getElementById('timer')
+    let score = document.getElementById('score');
+    let timer = document.getElementById('timer');
+    let reload = document.getElementById('reload')
+
     // let size = 100
     let count = 0
     let time = 10
 
     start.addEventListener('click', function(){
-    let interval = setInterval(callback, 1000);
+    let interval = setInterval(callback, 500);
     function callback() {
       let createBtn = document.createElement('button');
       createBtn.style.width = "100px";
@@ -105,8 +126,8 @@
       createBtn.style.borderRadius = "100px"
       createBtn.style.position = "absolute"
 
-      let x = Math.floor(Math.random() * 800)
-      let y = Math.floor(Math.random() * 800)
+      let x = Math.floor(Math.random() * 1000)
+      let y = Math.floor(Math.random() * 1000)
       let xString = x.toString()
       let ySting = y.toString()
 
@@ -120,7 +141,7 @@
         score.textContent = `점수 : ${count}점`
       })
 
-      if(time < 3){
+      if(time < 2.5){
         clearInterval(interval)
       }
 
@@ -136,8 +157,9 @@
         }
   })
 
-
-
+      reload.addEventListener('click',function(){
+      location.reload()
+    })
 
     // dot.addEventListener('click', function(event){
     //   let x = Math.floor(Math.random() * event.pageX + 200)
