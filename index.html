@@ -26,19 +26,41 @@
     sosa.style.height = "100px";
     sosa.style.backgroundColor = "black";
     sosa.style.position = "absolute";
-    sosa.style.top = "100px"
- 
-
-
-    let pos = 0;
+    sosa.style.cursor = "pointer";
 
     
-    setInterval(function(){
-      sosa.style.top = pos + "px";
-      sosa.style.left = pos + "px"
-      pos++;
-    },20)
+    let pos = 0;
+    let root = document.getElementById('root')
 
+    let rootHeight = window.innerHeight
+
+
+    sosa.addEventListener('click', function(){
+    let interval = setInterval(callback, 10)
+      function callback(){
+        sosa.style.top = pos + "px";
+        sosa.style.left = pos*2 + "px"
+        let root = document.getElementById('root')
+        pos++;
+        
+        if(pos>rootHeight/4){
+        sosa.style.backgroundColor = "red";
+        sosa.style.width = "150px"
+        sosa.style.height = "150px"
+        root.style.backgroundColor = "white"
+        }
+        if(pos>rootHeight/2){
+        sosa.style.backgroundColor = "blue";
+        sosa.style.width = "200px"
+        sosa.style.height = "200px"
+        root.style.backgroundColor = "green"
+
+        if(pos > rootHeight-200){
+          clearInterval(interval);
+        }
+      }}
+    })
+    
 
   </script>
 </body>
