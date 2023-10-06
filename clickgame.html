@@ -4,8 +4,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    *{margin : 0; padding:0; box-sizing: border-box;}
+    #root{
+      width:100vw;
+      height:100vh;
+      background-color: beige;
+    }
+  </style>
 </head>
 <body>
-  
+  <div id="root">
+    <div id="dot"></div>
+  </div>
+
+  <script>
+    let dot = document.getElementById('dot');
+    dot.style.width = "50px"
+    dot.style.height = "50px"
+    dot.style.borderRadius = "50px"
+    dot.style.backgroundColor = "blue";
+    dot.style.position = "absolute"
+
+
+
+    dot.addEventListener('click', function(event){
+      let x = Math.floor(Math.random() * event.pageX + 200)
+      let y = Math.floor(Math.random() * event.pageY + 200)
+
+      let xString = x.toString()
+      let ySting = y.toString()
+
+      dot.style.left = xString+"px"
+      dot.style.top = ySting+"px"
+    })
+
+  </script>
 </body>
 </html>
