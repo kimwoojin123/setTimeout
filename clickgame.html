@@ -15,29 +15,60 @@
 </head>
 <body>
   <div id="root">
-    <div id="dot"></div>
   </div>
 
   <script>
-    let dot = document.getElementById('dot');
-    dot.style.width = "50px"
-    dot.style.height = "50px"
-    dot.style.borderRadius = "50px"
-    dot.style.backgroundColor = "blue";
-    dot.style.position = "absolute"
+    // let dot = document.getElementById('dot');
+    // dot.style.width = "50px"
+    // dot.style.height = "50px"
+    // dot.style.borderRadius = "50px"
+    // dot.style.backgroundColor = "blue";
+    // dot.style.position = "absolute"
 
 
 
-    dot.addEventListener('click', function(event){
-      let x = Math.floor(Math.random() * event.pageX + 200)
-      let y = Math.floor(Math.random() * event.pageY + 200)
 
+    // interval로 div계속 생성 > createElement로 button 만들어서 root에 자식으로 추가
+    // button에 스타일주고 랜덤포지션 줌
+    // 클릭이벤트에 remove줘서 클릭하면 사라지게 함
+    let root = document.getElementById('root');
+    let interval = setInterval(callback, 1500);
+    function callback() {
+      let createBtn = document.createElement('button');
+      createBtn.style.width = "100px";
+      createBtn.style.height = "100px";
+      createBtn.style.backgroundColor = "blue"
+      createBtn.style.borderRadius = "100px"
+      createBtn.style.position = "absolute"
+
+      let x = Math.floor(Math.random() * 800)
+      let y = Math.floor(Math.random() * 800)
       let xString = x.toString()
       let ySting = y.toString()
 
-      dot.style.left = xString+"px"
-      dot.style.top = ySting+"px"
-    })
+      createBtn.style.left = xString+"px"
+      createBtn.style.top = ySting+"px"
+      root.appendChild(createBtn)
+
+      createBtn.addEventListener('click', function(){
+        createBtn.remove()
+      })
+    }
+
+
+
+
+    // dot.addEventListener('click', function(event){
+    //   let x = Math.floor(Math.random() * event.pageX + 200)
+    //   let y = Math.floor(Math.random() * event.pageY + 200)
+
+    //   let xString = x.toString()
+    //   let ySting = y.toString()
+
+    //   dot.style.left = xString+"px"
+    //   dot.style.top = ySting+"px"
+
+    // })
 
   </script>
 </body>
