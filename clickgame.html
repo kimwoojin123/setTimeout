@@ -141,8 +141,8 @@
       createBtn.style.borderRadius = "100px"
       createBtn.style.position = "absolute"
 
-      let x = Math.floor(Math.random() * 1000)
-      let y = Math.floor(Math.random() * 1000)
+      let x = Math.floor(Math.random() * 1200)
+      let y = Math.floor(Math.random() * 850)
       let xString = x.toString()
       let ySting = y.toString()
 
@@ -156,8 +156,11 @@
         score.textContent = `점수 : ${count}점`
       })
 
-      if(time < 2.5){
+      if(time === 0){
         clearInterval(interval)
+        while(root.hasChildNodes()){
+          root.removeChild(root.firstChild)
+        }
       }
 
     }
