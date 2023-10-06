@@ -6,17 +6,29 @@
   <title>Document</title>
   <style>
     *{margin : 0; padding:0; box-sizing: border-box;}
+    body{
+      display:flex;
+      align-items: center;
+    }
+    
     #root{
-      width:100vw;
+      width:70vw;
       height:100vh;
       background-color: beige;
+    }
+    #start{
+      width:200px;
+      height:200px;
+      background-color: orange;
+      text-align: center;
+      
     }
   </style>
 </head>
 <body>
   <div id="root">
   </div>
-
+  <div id="start">시작</div>
   <script>
     // let dot = document.getElementById('dot');
     // dot.style.width = "50px"
@@ -32,6 +44,9 @@
     // button에 스타일주고 랜덤포지션 줌
     // 클릭이벤트에 remove줘서 클릭하면 사라지게 함
     let root = document.getElementById('root');
+    let start = document.getElementById('start');
+
+    
     let interval = setInterval(callback, 1500);
     function callback() {
       let createBtn = document.createElement('button');
@@ -53,6 +68,8 @@
 
       createBtn.addEventListener('click', function(){
         createBtn.remove()
+
+      
       })
     }
 
