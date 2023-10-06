@@ -16,6 +16,11 @@
       height:100vh;
       background-color: beige;
     }
+
+    div:nth-child(2){
+      display:flex;
+      flex-direction: column;
+    }
     #start{
       width:200px;
       height:200px;
@@ -26,12 +31,33 @@
       align-items: center;
       cursor: pointer;
     }
+    #score{
+      width:200px;
+      height:100px;
+      background-color: lightgray;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+    }
+    #timer{
+      width:200px;
+      height:100px;
+      background-color: lightgray;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   </style>
 </head>
 <body>
   <div id="root">
   </div>
+  <div>
+  <div id="timer">제한시간</div>
+  <div id="score">점수</div>
   <div id="start">시작</div>
+  </div>
   <script>
     // let dot = document.getElementById('dot');
     // dot.style.width = "50px"
@@ -48,23 +74,27 @@
     // 클릭이벤트에 remove줘서 클릭하면 사라지게 함
     let root = document.getElementById('root');
     let start = document.getElementById('start');
+    let score = document.getElementById('score')
     let size = 100
+    let count = 0
+
 
     start.addEventListener('click', function(){
     let interval = setInterval(callback, 1500);
     function callback() {
       let createBtn = document.createElement('button');
-      // createBtn.style.width = "100px";
-      // createBtn.style.height = "100px";
-      setInterval(function(){
-        createBtn.style.width = size + "px"
-        createBtn.style.height = size + "px"
-        size--
-        if(size < 20){
-          // createBtn.remove()
-          // 특정 크기일때의 요소만 지정하고싶은데 그방법을 모름;;
-        }
-      },100)
+      createBtn.style.width = "100px";
+      createBtn.style.height = "100px";
+      // setInterval(function(){
+      //   createBtn.style.width = size + "px"
+      //   createBtn.style.height = size + "px"
+      //   size--
+      //   if(size === 20){
+      //     // this.remove()
+      //     createBtn.remove()
+      //     // 특정 크기일때의 요소만 지정하고싶은데 그방법을 모름;;
+      //   }
+      // },100)
       createBtn.style.backgroundImage = "url(images.png)"
       createBtn.style.backgroundSize = "cover"
       createBtn.style.borderRadius = "100px"
@@ -81,7 +111,8 @@
 
       createBtn.addEventListener('click', function(){
         createBtn.remove()
-      
+        count = count + 10
+        score.textContent = count
       })
     }})
 
